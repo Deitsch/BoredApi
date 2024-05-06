@@ -30,33 +30,33 @@ extension BoredApi {
     public struct Activity: Codable {
 
         /// Description of the queried activity
-        let activity: String
+        public let activity: String
 
         /// A factor describing how possible an event is to do with zero being the most accessible
         ///
         /// range [0.0, 1.0]
-        let accessibility: Double
+        public let accessibility: Double
 
         /// Type of the activity
-        let type: ActivityType
+        public let type: ActivityType
 
         /// The number of people that this activity could involve
         ///
         /// range [0, n]
-        let participants: Int
+        public let participants: Int
 
         /// A factor describing the cost of the event with zero being free
         ///
         /// range [0, 1]
-        let price: Double
+        public let price: Double
 
         /// A link where to find more about the activity
-        let link: String
+        public let link: String
 
         /// A unique numeric id
         ///
         /// range [1000000, 9999999]
-        let key: Int
+        public let key: Int
 
         private enum CodingKeys: String, CodingKey {
             case activity
