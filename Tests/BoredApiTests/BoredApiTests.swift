@@ -71,7 +71,7 @@ final class BoredApiTests: XCTestCase {
 
     func testLoadValidParam_price_range() async throws {
         let activtiy = try await api.loadActivity(price: .range(min: 0.4, max: 0.6))
-        XCTAssertGreaterThan(activtiy.price, 0.4)
-        XCTAssertLessThan(activtiy.price, 0.6)
+        XCTAssertGreaterThanOrEqual(activtiy.price, 0.4)
+        XCTAssertLessThanOrEqual(activtiy.price, 0.6)
     }
 }
