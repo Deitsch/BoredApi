@@ -50,11 +50,11 @@ extension BoredApi {
         if let maxprice {
             params.append(URLQueryItem(name: "maxprice", value: String(maxprice)))
         }
-        if let maxaccessibility = maxaccessibility.map(String.init) {
-            params.append(URLQueryItem(name: "maxaccessibility", value: maxaccessibility))
-        }
         if let minaccessibility = minaccessibility.map(String.init) {
             params.append(URLQueryItem(name: "minaccessibility", value: minaccessibility))
+        }
+        if let maxaccessibility = maxaccessibility.map(String.init) {
+            params.append(URLQueryItem(name: "maxaccessibility", value: maxaccessibility))
         }
         if let accessibility = accessibility.map(String.init) {
             params.append(URLQueryItem(name: "accessibility", value: accessibility))
@@ -79,7 +79,7 @@ extension BoredApi {
             params.append(contentsOf: price.params(name: "price"))
         }
         if let accessibility {
-            params.append(contentsOf: accessibility.params(name: "price"))
+            params.append(contentsOf: accessibility.params(name: "accessibility"))
         }
         let activityRequest = try buildRequest(method: .GET, endpoint: .activity, parameters: params)
         return try await requestActivity(request: activityRequest)
