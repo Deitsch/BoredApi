@@ -2,11 +2,12 @@ import XCTest
 @testable import BoredApi
 
 final class BoredApiTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    let api = BoredApi()
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    func testLoadRandomActivity() async throws {
+        let activtiy = try await api.loadActivity()
+
+        XCTAssert(activtiy.accessibility >= 0)
+        XCTAssert(activtiy.accessibility <= 1)
     }
 }
