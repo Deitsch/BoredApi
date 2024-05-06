@@ -19,6 +19,12 @@ extension BoredApi {
         case internalServerError
         case statusCode(Int)
         case decodingError(Error)
+        case failedToConstructUrl
+        case noActivityFound
+    }
+
+    struct ErrorModel: Codable {
+        let error: String
     }
 
     public struct Activity: Codable {
@@ -75,7 +81,7 @@ extension BoredApi {
             key = Int(keyString) ?? 0
         }
 
-        init(activity: String, accessibility: Double, type: ActivityType, participants: Int, price: Double, link: String, key: Int) {
+        public init(activity: String, accessibility: Double, type: ActivityType, participants: Int, price: Double, link: String, key: Int) {
             self.activity = activity
             self.accessibility = accessibility
             self.type = type
@@ -84,6 +90,28 @@ extension BoredApi {
             self.link = link
             self.key = key
         }
+    }
 
+    public enum ExactOrRange<T: LosslessStringConvertible> {
+        /// Set exact value to match
+        case exact(value: T)
+        /// Set min or max boundary nil if not needed
+        case range(min: T?, max: T?)
+
+        func params(name: String) -> [URLQueryItem] {
+            switch self {
+            case .exact(let value):
+                return [URLQueryItem(name: name, value: String(value))]
+            case .range(let min, let max):
+                var params: [URLQueryItem] = []
+                if let min {
+                    params.append(URLQueryItem(name: "min" + name, value: String(min)))
+                }
+                if let max {
+                    params.append(URLQueryItem(name: "max" + name, value: String(max)))
+                }
+                return params
+            }
+        }
     }
 }
