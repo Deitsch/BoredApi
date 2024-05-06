@@ -1,0 +1,10 @@
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+IPHONEOS_DEPLOYMENT_TARGET = 16.0
+MARKETING_VERSION = 0.0.1
+CURRENT_PROJECT_VERSION = 99 // will be set to CI_PIPELINE_ID
+PRODUCT_NAME_BASE = Bored App
+DEVELOPMENT_TEAM = xxx
+PRODUCT_MODULE_NAME = BoredAppModule
+ENABLE_USER_SCRIPT_SANDBOXING = NO // XCode 15 defaults to YES -> breaks swiftlint

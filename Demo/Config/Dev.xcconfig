@@ -1,0 +1,9 @@
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Base.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = io.deitsch.boredapp.dev
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon-Dev
+PRODUCT_NAME = $(PRODUCT_NAME_BASE) $(ENVIRONMENT)
+ENVIRONMENT = Dev

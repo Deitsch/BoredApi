@@ -1,0 +1,40 @@
+disabled_rules: # rule identifiers to exclude from running
+  - vertical_whitespace
+  - line_length
+  - todo
+  - identifier_name
+  - valid_ibinspectable
+  - empty_enum_arguments # disagree - they may be intented to make the reader aware of the parameter
+  - trailing_whitespace # formatting only and may also be added by xcode for empyt line breaks automatically
+  - statement_position # formatting only, not relevant for readability
+  - inclusive_language
+
+opt_in_rules: # Rules that are not enabled by default
+  - force_unwrapping
+  - private_outlet
+  - private_action
+  - empty_count
+  - implicitly_unwrapped_optional
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Packages
+  - build
+
+# Rule configurations
+
+file_length:
+    warning: 500
+    error: 2000
+
+function_body_length:
+    warning: 60
+    error: 100
+
+type_body_length:
+    warning: 300
+    error: 600
+
+cyclomatic_complexity:
+    warning: 10
+    error: 20
