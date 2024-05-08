@@ -19,7 +19,7 @@ struct BoredApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ActivityView(viewModel: ActivityView.ViewModel(api: api))
                 .environmentObject(api)
         }
     }

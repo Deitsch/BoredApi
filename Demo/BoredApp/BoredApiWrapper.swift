@@ -8,6 +8,10 @@
 import Foundation
 import BoredApi
 
+typealias RemoteDataProvider = BoredApi
+typealias Activity = BoredApi.Activity
+typealias ActivityType = BoredApi.ActivityType
+
 class BoredApiWrapper: ObservableObject {
     private let dataProvider: DataProvider
 
@@ -24,8 +28,6 @@ protocol DataProvider {
     func loadActicity(key: String?, type: BoredApi.ActivityType?, participants: Int?, price: BoredApi.ExactOrRange<Double>?, accessibility: BoredApi.ExactOrRange<Int>?) async throws -> BoredApi.Activity
 }
 
-typealias RemoteDataProvider = BoredApi 
-
 extension BoredApi: DataProvider {
     func loadActicity(key: String?, type: BoredApi.ActivityType?, participants: Int?, price: BoredApi.ExactOrRange<Double>?, accessibility: BoredApi.ExactOrRange<Int>?) async throws -> BoredApi.Activity {
         try await self.loadActivity(key: key, type: type, participants: participants, price: price, accessibility: accessibility)
@@ -34,6 +36,7 @@ extension BoredApi: DataProvider {
 
 class LocalDataProvider: DataProvider {
     func loadActicity(key: String? = nil, type: BoredApi.ActivityType? = nil, participants: Int? = nil, price: BoredApi.ExactOrRange<Double>? = nil, accessibility: BoredApi.ExactOrRange<Int>? = nil) async throws -> BoredApi.Activity {
-        return BoredApi.Activity(activity: "Demo Activity", accessibility: 1, type: .busywork, participants: 1, price: 1, link: "no link", key: 1)
+        let rndNumber = Int.random(in: 0..<9999)
+        return BoredApi.Activity(activity: "Demo Activity \(rndNumber)", accessibility: Double(rndNumber), type: .busywork, participants: rndNumber, price: Double(rndNumber), link: "no link", key: rndNumber)
     }
 }
