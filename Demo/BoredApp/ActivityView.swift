@@ -17,11 +17,18 @@ struct ActivityView: View {
         NavigationStack {
             VStack {
                 Spacer()
-                if let activity = viewModel.activity {
+                switch viewModel.state {
+                case .idle:
+                    Text("Activity loading")
+                case .activity(let activity):
                     ActivityCardView(activity: activity)
-                }
-                else {
-                    Text("no activity found")
+                case .error(let error):
+                    if case BoredApi.ApiError.noActivityFound = error {
+                        Text("No activity found. Try to change filters")
+                    }
+                    else {
+                        Text("An error occured, check your internet connection")
+                    }
                 }
                 Spacer()
                 Text(Bundle.version).opacity(0.3)
@@ -55,10 +62,9 @@ struct ActivityView: View {
                 Toggle("", isOn: $viewModel.filterViewModel.active)
             }
             Spacer()
-            TextField("Key", text: $viewModel.filterViewModel.key)
+            TextField("Key", value: $viewModel.filterViewModel.key, format: .number)
             Divider()
-            TextField("Participants", value: $viewModel.filterViewModel.participants, formatter: NumberFormatter())
-                .keyboardType(UIKeyboardType.decimalPad)
+            TextField("Participants", value: $viewModel.filterViewModel.participants, format: .number)
             Divider()
             Picker("", selection: $viewModel.filterViewModel.type) {
                 Text("Any").tag(nil as ActivityType?)

@@ -30,10 +30,10 @@ public class BoredApi {
 extension BoredApi {
 
     /// default implementation of the API
-    public func loadActivity(key: String? = nil, type: ActivityType? = nil, participants: Int? = nil, price: Double? = nil, minprice: Double? = nil, maxprice: Double? = nil, accessibility: Int? = nil, minaccessibility: Int? = nil, maxaccessibility: Int? = nil) async throws -> Activity {
+    public func loadActivity(key: Int? = nil, type: ActivityType? = nil, participants: Int? = nil, price: Double? = nil, minprice: Double? = nil, maxprice: Double? = nil, accessibility: Int? = nil, minaccessibility: Int? = nil, maxaccessibility: Int? = nil) async throws -> Activity {
         var params: [URLQueryItem] = []
         if let key {
-            params.append(URLQueryItem(name: "key", value: key))
+            params.append(URLQueryItem(name: "key", value: String(key)))
         }
         if let type = type?.rawValue {
             params.append(URLQueryItem(name: "type", value: type))
@@ -64,10 +64,10 @@ extension BoredApi {
     }
 
     /// improved implementation of the API, which makes range and exact mutually exclusive
-    public func loadActivity(key: String? = nil, type: ActivityType? = nil, participants: Int? = nil, price: ExactOrRange<Double>? = nil, accessibility: ExactOrRange<Int>? = nil) async throws -> Activity {
+    public func loadActivity(key: Int? = nil, type: ActivityType? = nil, participants: Int? = nil, price: ExactOrRange<Double>? = nil, accessibility: ExactOrRange<Int>? = nil) async throws -> Activity {
         var params: [URLQueryItem] = []
         if let key {
-            params.append(URLQueryItem(name: "key", value: key))
+            params.append(URLQueryItem(name: "key", value: String(key)))
         }
         if let type = type?.rawValue {
             params.append(URLQueryItem(name: "type", value: type))

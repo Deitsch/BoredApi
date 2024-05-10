@@ -18,23 +18,32 @@ struct ActivityCardView: View {
             VStack {
                 Text(activity.activity)
                 Divider()
-                Text(activity.type.rawValue.capitalized)
+                cardLine(text: "Type", value: activity.type.rawValue.capitalized)
                 Divider()
-                Text(activity.participants, format: .number)
+                cardLine(text: "Participants", value: "\(activity.participants)")
                 Divider()
                 if !activity.link.isEmpty, let url = URL(string: activity.link) {
                     Link(activity.link, destination: url)
                     Divider()
                 }
-                Text(activity.key, format: .number)
+                cardLine(text: "Key", value: "\(activity.key)")
                 Divider()
-                Text(activity.price, format: .number)
+                cardLine(text: "Price", value: "\(activity.price)")
             }
             .padding(20)
         }
-        .frame(width: 320, height: 300)
+        .frame(width: 320, height: 340)
         .shadow(radius: 10)
         .padding(20)
+    }
+
+    @ViewBuilder
+    private func cardLine(text: LocalizedStringKey, value: String) -> some View {
+        HStack {
+            Text(text)
+            Spacer()
+            Text(value)
+        }
     }
 }
 

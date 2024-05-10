@@ -11,7 +11,7 @@ extension ActivityView {
     class FilterViewModel: ObservableObject {
         @Published var active = false
 
-        @Published var key: String = ""
+        @Published var key: Int?
         @Published var participants: Int?
         @Published var type: ActivityType?
         @Published var price: ExactOrRange<Double> = .exact(value: nil)
@@ -20,9 +20,18 @@ extension ActivityView {
 }
 
 extension ActivityView {
+    enum ViewState {
+        case idle
+        case activity(Activity)
+        case error(Error)
+    }
+}
+
+extension ActivityView {
+
     @MainActor
     class ViewModel: ObservableObject {
-        @Published var activity: Activity?
+        @Published var state: ViewState = .idle
         @Published var showFilterSheet = false
         @Published var filterViewModel = FilterViewModel()
         private let api: BoredApiWrapper
@@ -34,6 +43,8 @@ extension ActivityView {
         func loadActivity() {
             Task {
                 do {
+                    let activity: Activity
+
                     if filterViewModel.active {
                         activity = try await api.loadActicity(
                             key: filterViewModel.key,
@@ -46,9 +57,11 @@ extension ActivityView {
                     else {
                         activity = try await api.loadActicity()
                     }
+                    state = .activity(activity)
                 }
                 catch {
                     logger.error(error)
+                    state = .error(error)
                 }
             }
         }
