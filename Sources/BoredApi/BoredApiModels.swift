@@ -10,7 +10,7 @@ import Foundation
 extension BoredApi {
 
     /// Type of Activity returned by BoredApi
-    public enum ActivityType: String, Codable {
+    public enum ActivityType: String, Codable, CaseIterable {
         case education, recreational, social, diy, charity, cooking, relaxation, music, busywork
     }
 
@@ -94,14 +94,18 @@ extension BoredApi {
 
     public enum ExactOrRange<T: LosslessStringConvertible> {
         /// Set exact value to match
-        case exact(value: T)
+        case exact(value: T?)
         /// Set min or max boundary nil if not needed
         case range(min: T?, max: T?)
 
         func params(name: String) -> [URLQueryItem] {
             switch self {
             case .exact(let value):
-                return [URLQueryItem(name: name, value: String(value))]
+                var params: [URLQueryItem] = []
+                if let value {
+                    params.append(URLQueryItem(name: name, value: String(value)))
+                }
+                return params
             case .range(let min, let max):
                 var params: [URLQueryItem] = []
                 if let min {

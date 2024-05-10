@@ -8,41 +8,6 @@
 import SwiftUI
 import BoredApi
 
-
-extension ActivityView {
-    @MainActor
-    class ViewModel: ObservableObject {
-        @Published var activity: Activity?
-        @Published var showFilterSheet = false
-        private let api: BoredApiWrapper
-
-        init(api: BoredApiWrapper) {
-            self.api = api
-        }
-
-        func loadActivity() {
-            Task {
-                do {
-                    activity = try await api.loadActicity()
-                }
-                catch {
-                    logger.error(error)
-                }
-            }
-        }
-
-        var filterbuttonIcon: String {
-            showFilterSheet
-                ? "line.3.horizontal.decrease.circle.fill"
-                : "line.3.horizontal.decrease.circle"
-        }
-
-        func showFilter() {
-            showFilterSheet = true
-        }
-    }
-}
-
 struct ActivityView: View {
 
     @EnvironmentObject private var api: BoredApiWrapper
@@ -51,12 +16,15 @@ struct ActivityView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Spacer()
                 if let activity = viewModel.activity {
-                    Text(activity.activity)
+                    ActivityCardView(activity: activity)
                 }
                 else {
                     Text("no activity found")
                 }
+                Spacer()
+                Text(Bundle.version).opacity(0.3)
             }
             .padding()
             .navigationTitle("Activity")
@@ -77,9 +45,39 @@ struct ActivityView: View {
         }
     }
 
+    // one could move this out to a seperate view
     @ViewBuilder
-    var filterSheet: some View {
-        Text("filter sheet")
+    private var filterSheet: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Filter")
+                    .font(.largeTitle)
+                Toggle("", isOn: $viewModel.filterViewModel.active)
+            }
+            Spacer()
+            TextField("Key", text: $viewModel.filterViewModel.key)
+            Divider()
+            TextField("Participants", value: $viewModel.filterViewModel.participants, formatter: NumberFormatter())
+                .keyboardType(UIKeyboardType.decimalPad)
+            Divider()
+            Picker("", selection: $viewModel.filterViewModel.type) {
+                Text("Any").tag(nil as ActivityType?)
+                ForEach(ActivityType.allCases) { value in
+                    Text(value.rawValue.capitalized).tag(value as ActivityType?)
+                }
+            }
+            Divider()
+            ExactOrRangePicker(title: "Price", exactOrRange: $viewModel.filterViewModel.price)
+            Divider()
+            ExactOrRangePicker(title: "Accessibility", exactOrRange: $viewModel.filterViewModel.accessibility)
+            Spacer()
+        }
+        .contentShape(.rect)
+        .onTapGesture {
+            dismissKeyboard()
+        }
+        .padding(20)
+        .presentationDetents([.medium])
     }
 }
 

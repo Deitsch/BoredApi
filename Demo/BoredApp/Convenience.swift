@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Logging
+import BoredApi
 
 extension Logger {
     func error(_ error: Error) {
@@ -29,5 +30,15 @@ extension Bundle {
         let version = dictionary?["CFBundleShortVersionString"] as? String
         let build = dictionary?["CFBundleVersion"] as? String
         return "\(version ?? "noBundleShortVersion") (\(build ?? "noBundleVersion"))"
+    }
+}
+
+extension ActivityType: Identifiable {
+    public var id: Self { self }
+}
+
+extension Activity {
+    static var preview: Self {
+        Activity(activity: "Preview Activity", accessibility: 1, type: .busywork, participants: 2, price: 3, link: "https://www.apple.com", key: 123)
     }
 }

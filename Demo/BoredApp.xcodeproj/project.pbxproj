@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8997C6BD2BEEAC1700EA331D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */; };
+		8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */; };
 		89A146322BE972CD003100F6 /* BoredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A146312BE972CD003100F6 /* BoredApp.swift */; };
 		89A146342BE972CD003100F6 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A146332BE972CD003100F6 /* ActivityView.swift */; };
 		89A146362BE972CE003100F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89A146352BE972CE003100F6 /* Assets.xcassets */; };
@@ -19,6 +21,7 @@
 		89AC23E32BE974DC00183505 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 89AC23E02BE974DC00183505 /* Prod.xcconfig */; };
 		89AC23F32BE9775100183505 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 89AC23F22BE9775100183505 /* Logging */; };
 		89AC23F72BE9789700183505 /* BoredApiWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC23F62BE9789700183505 /* BoredApiWrapper.swift */; };
+		89D51DBB2BEBE45B00087C6E /* ExactOrRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D51DBA2BEBE45B00087C6E /* ExactOrRangePicker.swift */; };
 		89E277FD2BE97D5500284FB9 /* BoredApi in Frameworks */ = {isa = PBXBuildFile; productRef = 89E277FC2BE97D5500284FB9 /* BoredApi */; };
 		89E277FF2BE97DDC00284FB9 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E277FE2BE97DDC00284FB9 /* Convenience.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		89A1462E2BE972CD003100F6 /* Bored App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bored App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A146312BE972CD003100F6 /* BoredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredApp.swift; sourceTree = "<group>"; };
 		89A146332BE972CD003100F6 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		89AC23E02BE974DC00183505 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		89AC23EC2BE975FC00183505 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		89AC23F62BE9789700183505 /* BoredApiWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredApiWrapper.swift; sourceTree = "<group>"; };
+		89D51DBA2BEBE45B00087C6E /* ExactOrRangePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactOrRangePicker.swift; sourceTree = "<group>"; };
 		89E277FE2BE97DDC00284FB9 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,8 +118,11 @@
 		89A146302BE972CD003100F6 /* BoredApp */ = {
 			isa = PBXGroup;
 			children = (
+				89D51DBA2BEBE45B00087C6E /* ExactOrRangePicker.swift */,
 				89A146312BE972CD003100F6 /* BoredApp.swift */,
 				89A146332BE972CD003100F6 /* ActivityView.swift */,
+				8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */,
+				8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */,
 				89AC23F62BE9789700183505 /* BoredApiWrapper.swift */,
 				89A146352BE972CE003100F6 /* Assets.xcassets */,
 				89A146372BE972CF003100F6 /* BoredApp.entitlements */,
@@ -330,9 +339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				89AC23F72BE9789700183505 /* BoredApiWrapper.swift in Sources */,
+				89D51DBB2BEBE45B00087C6E /* ExactOrRangePicker.swift in Sources */,
 				89E277FF2BE97DDC00284FB9 /* Convenience.swift in Sources */,
+				8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */,
 				89A146342BE972CD003100F6 /* ActivityView.swift in Sources */,
 				89A146322BE972CD003100F6 /* BoredApp.swift in Sources */,
+				8997C6BD2BEEAC1700EA331D /* ActivityViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
