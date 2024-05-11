@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891B06EE2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */; };
 		8997C6BD2BEEAC1700EA331D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */; };
 		8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */; };
 		89A146322BE972CD003100F6 /* BoredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A146312BE972CD003100F6 /* BoredApp.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactOrRangePickerModel.swift; sourceTree = "<group>"; };
 		8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		89A1462E2BE972CD003100F6 /* Bored App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bored App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				89A146372BE972CF003100F6 /* BoredApp.entitlements */,
 				89A146382BE972CF003100F6 /* Preview Content */,
 				89E277FE2BE97DDC00284FB9 /* Convenience.swift */,
+				891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */,
 			);
 			path = BoredApp;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			files = (
 				89AC23F72BE9789700183505 /* BoredApiWrapper.swift in Sources */,
 				89D51DBB2BEBE45B00087C6E /* ExactOrRangePicker.swift in Sources */,
+				891B06EE2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift in Sources */,
 				89E277FF2BE97DDC00284FB9 /* Convenience.swift in Sources */,
 				8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */,
 				89A146342BE972CD003100F6 /* ActivityView.swift in Sources */,
