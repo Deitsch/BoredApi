@@ -92,7 +92,7 @@ extension BoredApi {
         }
     }
 
-    public enum ExactOrRange<T: LosslessStringConvertible> {
+    public enum ExactOrRange<T: LosslessStringConvertible>: Equatable where T: Equatable {
         /// Set exact value to match
         case exact(value: T?)
         /// Set min or max boundary nil if not needed
@@ -117,5 +117,14 @@ extension BoredApi {
                 return params
             }
         }
+
+        public static func == (lhs: BoredApi.ExactOrRange<T>, rhs: BoredApi.ExactOrRange<T>) -> Bool {
+            switch (lhs, rhs) {
+            case (.exact(let vall), .exact(let valr)): vall == valr
+            case (.range(let minl, let maxl), .range(let minr, let maxr)): minl == minr && maxl == maxr
+            default: false
+            }
+        }
+
     }
 }

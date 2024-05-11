@@ -8,26 +8,77 @@
 import SwiftUI
 
 extension ExactOrRangePicker {
-    
-    private class ViewModel: ObservableObject {
-        @Published var mode: Mode = .range
-
-        @Published var min = ""
-        @Published var max = ""
-        @Published var exact = ""
-    }
 
     private enum Mode: String, CaseIterable, Identifiable {
         case exact, range
         var id: Self { self }
     }
+
+    private class ViewModel: ObservableObject {
+        @Published var mode: Mode
+        var exactAdapter: Binding<String>
+        var minAdapter: Binding<String>
+        var maxAdapter: Binding<String>
+
+        init(exactOrRange: Binding<ExactOrRange<T>>) {
+            mode = switch exactOrRange.wrappedValue {
+            case .exact: .exact
+            case .range: .range
+            }
+            exactAdapter = Binding(
+                get: {
+                    if case .exact(let val) = exactOrRange.wrappedValue, let val {
+                        return String(val)
+                    }
+                    return ""
+                },
+                set: { value in
+                    exactOrRange.wrappedValue = .exact(value: T(value))
+                })
+            minAdapter = Binding(
+                get: {
+                    if case .range(let min, _) = exactOrRange.wrappedValue, let min {
+                        return String(min)
+                    }
+                    return ""
+                },
+                set: { value in
+                    var oldMax: T?
+                    if case .range(_, let max) = exactOrRange.wrappedValue {
+                        oldMax = max
+                    }
+                    exactOrRange.wrappedValue = .range(min: T(value), max: oldMax)
+                })
+            maxAdapter = Binding(
+                get: {
+                    if case .range(_, let max) = exactOrRange.wrappedValue, let max {
+                        return String(max)
+                    }
+                    return ""
+                },
+                set: { value in
+                    var oldMin: T?
+                    if case .range(let min, _) = exactOrRange.wrappedValue {
+                        oldMin = min
+                    }
+                    exactOrRange.wrappedValue = .range(min: oldMin, max: T(value))
+                })
+        }
+    }
 }
 
-struct ExactOrRangePicker<T: LosslessStringConvertible>: View {
+struct ExactOrRangePicker<T: LosslessStringConvertible>: View where T: Equatable {
 
     let title: LocalizedStringKey
     @Binding var exactOrRange: ExactOrRange<T>
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: ViewModel
+    @State private var mode: Mode = .exact
+
+    init(title: LocalizedStringKey, exactOrRange: Binding<ExactOrRange<T>>) {
+        self.title = title
+        self._exactOrRange = exactOrRange
+        self._viewModel = StateObject(wrappedValue: ViewModel(exactOrRange: exactOrRange))
+    }
 
     var body: some View {
         VStack {
@@ -42,57 +93,19 @@ struct ExactOrRangePicker<T: LosslessStringConvertible>: View {
             .pickerStyle(.segmented)
             switch viewModel.mode {
             case .exact:
-                TextField("Exact", text: $viewModel.exact)
+                TextField("Exact", text: viewModel.exactAdapter)
             case .range:
                 HStack {
-                    TextField("Min", text: $viewModel.min)
-                    TextField("Max", text: $viewModel.max)
+                    TextField("Min", text: viewModel.minAdapter)
+                    TextField("Max", text: viewModel.maxAdapter)
                 }
             }
         }
-
-        // TODO: refactor this into custom Binding
-        .onChange(of: viewModel.min, perform: updateExactOrRangeBinding)
-        .onChange(of: viewModel.max, perform: updateExactOrRangeBinding)
-        .onChange(of: viewModel.exact, perform: updateExactOrRangeBinding)
-        .onAppear {
-            switch exactOrRange {
-            case .exact(let value):
-                viewModel.exact = String(value)
-            case .range(let min, let max):
-                viewModel.min = String(min)
-                viewModel.max = String(max)
-            }
-        }
-    }
-
-    func updateExactOrRangeBinding(_ any: Any) {
-        exactOrRange = viewModel.mode == .exact
-        ? .exact(value: T(viewModel.exact))
-        : .range(min: T(viewModel.min), max: T(viewModel.max))
     }
 }
 
 #Preview {
     VStack {
         ExactOrRangePicker(title: "Some text", exactOrRange: .constant(.exact(value: 1)))
-    }
-}
-
-private extension Optional {
-    init?(_ description: String?) {
-        if let description {
-            self.init(description)
-        }
-        return nil
-    }
-}
-
-private extension String {
-    init(_ llsc: LosslessStringConvertible?) {
-        if let llsc {
-            self.init(llsc)
-        }
-        self.init("")
     }
 }
