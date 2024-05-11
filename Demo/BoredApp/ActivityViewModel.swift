@@ -15,7 +15,7 @@ extension ActivityView {
         @Published var participants: Int?
         @Published var type: ActivityType?
         @Published var price: ExactOrRange<Double> = .exact(value: nil)
-        @Published var accessibility: ExactOrRange<Int> = .exact(value: nil)
+        @Published var accessibility: ExactOrRange<Double> = .exact(value: nil)
     }
 }
 

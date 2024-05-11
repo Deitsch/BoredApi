@@ -64,7 +64,7 @@ extension BoredApi {
     }
 
     /// improved implementation of the API, which makes range and exact mutually exclusive
-    public func loadActivity(key: Int? = nil, type: ActivityType? = nil, participants: Int? = nil, price: ExactOrRange<Double>? = nil, accessibility: ExactOrRange<Int>? = nil) async throws -> Activity {
+    public func loadActivity(key: Int? = nil, type: ActivityType? = nil, participants: Int? = nil, price: ExactOrRange<Double>? = nil, accessibility: ExactOrRange<Double>? = nil) async throws -> Activity {
         var params: [URLQueryItem] = []
         if let key {
             params.append(URLQueryItem(name: "key", value: String(key)))

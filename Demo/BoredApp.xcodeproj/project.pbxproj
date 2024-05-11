@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				89D51DBA2BEBE45B00087C6E /* ExactOrRangePicker.swift */,
+				891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */,
 				89A146312BE972CD003100F6 /* BoredApp.swift */,
 				89A146332BE972CD003100F6 /* ActivityView.swift */,
 				8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */,
@@ -130,7 +131,6 @@
 				89A146372BE972CF003100F6 /* BoredApp.entitlements */,
 				89A146382BE972CF003100F6 /* Preview Content */,
 				89E277FE2BE97DDC00284FB9 /* Convenience.swift */,
-				891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */,
 			);
 			path = BoredApp;
 			sourceTree = "<group>";

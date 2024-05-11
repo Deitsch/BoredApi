@@ -17,7 +17,8 @@ struct ActivityCardView: View {
                 .fill(.white)
             VStack {
                 Text(activity.activity)
-                Divider()
+                    .font(.title2)
+                Spacer()
                 cardLine(text: "Type", value: activity.type.rawValue.capitalized)
                 Divider()
                 cardLine(text: "Participants", value: "\(activity.participants)")
@@ -29,6 +30,9 @@ struct ActivityCardView: View {
                 cardLine(text: "Key", value: "\(activity.key)")
                 Divider()
                 cardLine(text: "Price", value: "\(activity.price)")
+                Divider()
+                cardLine(text: "A1ccessibility", value: "\(activity.accessibility)")
+                Spacer()
             }
             .padding(20)
         }

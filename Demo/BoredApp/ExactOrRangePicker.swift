@@ -13,7 +13,7 @@ struct ExactOrRangePicker<T: LosslessStringConvertible>: View where T: Equatable
     @Binding var exactOrRange: ExactOrRange<T>
     @StateObject private var viewModel: ViewModel
 
-    init(title: LocalizedStringKey, exactOrRange: Binding<ExactOrRange<T>>) {
+    init(_ title: LocalizedStringKey, exactOrRange: Binding<ExactOrRange<T>>) {
         self.title = title
         self._exactOrRange = exactOrRange
         self._viewModel = StateObject(wrappedValue: ViewModel(exactOrRange: exactOrRange))
@@ -23,13 +23,13 @@ struct ExactOrRangePicker<T: LosslessStringConvertible>: View where T: Equatable
         VStack {
             HStack {
                 Text(title)
+                Spacer()
                 Picker("", selection: $viewModel.mode) {
                     ForEach(Mode.allCases) { value in
                         Text(value.rawValue.capitalized).tag(value)
                     }
                 }
             }
-            .pickerStyle(.segmented)
             switch viewModel.mode {
             case .exact:
                 TextField("Exact", text: viewModel.exactAdapter)
@@ -40,11 +40,14 @@ struct ExactOrRangePicker<T: LosslessStringConvertible>: View where T: Equatable
                 }
             }
         }
+        .onChange(of: viewModel.mode) { mode in
+            print(mode)
+        }
     }
 }
 
 #Preview {
     VStack {
-        ExactOrRangePicker(title: "Some text", exactOrRange: .constant(.exact(value: 1)))
+        ExactOrRangePicker("Some text", exactOrRange: .constant(.exact(value: 1)))
     }
 }

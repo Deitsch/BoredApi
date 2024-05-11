@@ -34,7 +34,7 @@ struct ActivityView: View {
                 Text(Bundle.version).opacity(0.3)
             }
             .padding()
-            .navigationTitle("Activity")
+            .navigationTitle("I am Bored")
             .onAppear(perform: viewModel.loadActivity)
             .sheet(isPresented: $viewModel.showFilterSheet) { filterSheet }
             .toolbar {
@@ -63,19 +63,27 @@ struct ActivityView: View {
             }
             Spacer()
             TextField("Key", value: $viewModel.filterViewModel.key, format: .number)
+                .keyboardType(.numberPad)
             Divider()
             TextField("Participants", value: $viewModel.filterViewModel.participants, format: .number)
+                .keyboardType(.numberPad)
             Divider()
-            Picker("", selection: $viewModel.filterViewModel.type) {
-                Text("Any").tag(nil as ActivityType?)
-                ForEach(ActivityType.allCases) { value in
-                    Text(value.rawValue.capitalized).tag(value as ActivityType?)
+            HStack {
+                Text("Type")
+                Spacer()
+                Picker("", selection: $viewModel.filterViewModel.type) {
+                    Text("Any").tag(nil as ActivityType?)
+                    ForEach(ActivityType.allCases) { value in
+                        Text(value.rawValue.capitalized).tag(value as ActivityType?)
+                    }
                 }
             }
             Divider()
-            ExactOrRangePicker(title: "Price", exactOrRange: $viewModel.filterViewModel.price)
+            ExactOrRangePicker("Price", exactOrRange: $viewModel.filterViewModel.price)
+                .keyboardType(.numberPad)
             Divider()
-            ExactOrRangePicker(title: "Accessibility", exactOrRange: $viewModel.filterViewModel.accessibility)
+            ExactOrRangePicker("Accessibility", exactOrRange: $viewModel.filterViewModel.accessibility)
+                .keyboardType(.numberPad)
             Spacer()
         }
         .contentShape(.rect)
