@@ -16,7 +16,6 @@
 		89A1463A2BE972CF003100F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89A146392BE972CF003100F6 /* Preview Assets.xcassets */; };
 		89A146442BE972CF003100F6 /* BoredAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A146432BE972CF003100F6 /* BoredAppTests.swift */; };
 		89A1464E2BE972CF003100F6 /* BoredAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A1464D2BE972CF003100F6 /* BoredAppUITests.swift */; };
-		89A146502BE972CF003100F6 /* BoredAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A1464F2BE972CF003100F6 /* BoredAppUITestsLaunchTests.swift */; };
 		89AC23E12BE974DC00183505 /* Dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 89AC23DE2BE974DC00183505 /* Dev.xcconfig */; };
 		89AC23E22BE974DC00183505 /* Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 89AC23DF2BE974DC00183505 /* Base.xcconfig */; };
 		89AC23E32BE974DC00183505 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 89AC23E02BE974DC00183505 /* Prod.xcconfig */; };
@@ -46,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactOrRangePickerModel.swift; sourceTree = "<group>"; };
+		897947D52BF03C7B008DA6C8 /* BoredAppProd.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BoredAppProd.xctestplan; path = /Users/simondeutsch/Documents/MyProjects/BoredApi/Demo/BoredApp/BoredAppProd.xctestplan; sourceTree = "<absolute>"; };
 		8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		89A1462E2BE972CD003100F6 /* Bored App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bored App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,7 +58,6 @@
 		89A146432BE972CF003100F6 /* BoredAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredAppTests.swift; sourceTree = "<group>"; };
 		89A146492BE972CF003100F6 /* BoredAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoredAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A1464D2BE972CF003100F6 /* BoredAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredAppUITests.swift; sourceTree = "<group>"; };
-		89A1464F2BE972CF003100F6 /* BoredAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		89AC23DE2BE974DC00183505 /* Dev.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		89AC23DF2BE974DC00183505 /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		89AC23E02BE974DC00183505 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		89A146302BE972CD003100F6 /* BoredApp */ = {
 			isa = PBXGroup;
 			children = (
+				897947D52BF03C7B008DA6C8 /* BoredAppProd.xctestplan */,
 				89D51DBA2BEBE45B00087C6E /* ExactOrRangePicker.swift */,
 				891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */,
 				89A146312BE972CD003100F6 /* BoredApp.swift */,
@@ -155,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				89A1464D2BE972CF003100F6 /* BoredAppUITests.swift */,
-				89A1464F2BE972CF003100F6 /* BoredAppUITestsLaunchTests.swift */,
 			);
 			path = BoredAppUITests;
 			sourceTree = "<group>";
@@ -364,7 +363,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89A146502BE972CF003100F6 /* BoredAppUITestsLaunchTests.swift in Sources */,
 				89A1464E2BE972CF003100F6 /* BoredAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,7 +585,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoredApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bored App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bored App";
 			};
 			name = "Debug Prod";
 		};
@@ -611,7 +609,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoredApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bored App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bored App";
 			};
 			name = "Release Prod";
 		};
@@ -776,7 +774,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoredApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bored App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bored App";
 			};
 			name = "Debug Dev";
 		};
@@ -910,7 +908,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoredApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bored App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bored App";
 			};
 			name = "Release Dev";
 		};

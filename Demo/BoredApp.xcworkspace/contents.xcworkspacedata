@@ -7,4 +7,7 @@
    <FileRef
       location = "group:BoredApp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:/Users/simondeutsch/Documents/MyProjects/BoredApi/Demo/BoredApp/BoredAppProd.xctestplan">
+   </FileRef>
 </Workspace>

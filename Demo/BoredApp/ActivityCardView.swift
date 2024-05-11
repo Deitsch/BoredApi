@@ -18,6 +18,7 @@ struct ActivityCardView: View {
             VStack {
                 Text(activity.activity)
                     .font(.title2)
+                    .accessibilityIdentifier("acticity-name")
                 Spacer()
                 cardLine(text: "Type", value: activity.type.rawValue.capitalized)
                 Divider()

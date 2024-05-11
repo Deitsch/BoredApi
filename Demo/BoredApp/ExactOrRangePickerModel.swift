@@ -47,7 +47,6 @@ extension ExactOrRangePicker {
                     if case .range(_, let max) = exactOrRange.wrappedValue {
                         oldMax = max
                     }
-                    print("mina", value, oldMax)
                     exactOrRange.wrappedValue = .range(min: T(value), max: oldMax)
                 })
             maxAdapter = Binding(
@@ -62,7 +61,6 @@ extension ExactOrRangePicker {
                     if case .range(let min, _) = exactOrRange.wrappedValue {
                         oldMin = min
                     }
-                    print("maxa", oldMin, value)
                     exactOrRange.wrappedValue = .range(min: oldMin, max: T(value))
                 })
 

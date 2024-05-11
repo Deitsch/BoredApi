@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "04E6D561-6F2B-4D6A-A76A-FCBC8938A516",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:BoredApp.xcodeproj",
+      "identifier" : "89A1462D2BE972CD003100F6",
+      "name" : "BoredApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BoredApp.xcodeproj",
+        "identifier" : "89A1463E2BE972CF003100F6",
+        "name" : "BoredAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:BoredApp.xcodeproj",
+        "identifier" : "89A146482BE972CF003100F6",
+        "name" : "BoredAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
