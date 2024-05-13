@@ -32,7 +32,7 @@ struct ActivityCardView: View {
                 Divider()
                 cardLine(text: "Price", value: "\(activity.price)")
                 Divider()
-                cardLine(text: "A1ccessibility", value: "\(activity.accessibility)")
+                cardLine(text: "Accessibility", value: "\(activity.accessibility)")
                 Spacer()
             }
             .padding(20)
