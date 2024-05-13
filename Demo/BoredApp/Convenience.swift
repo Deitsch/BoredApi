@@ -42,3 +42,17 @@ extension Activity {
         Activity(activity: "Preview Activity", accessibility: 1, type: .busywork, participants: 2, price: 3, link: "https://www.apple.com", key: 123)
     }
 }
+
+struct StatefulPreviewWrapper<Value, Content: View>: View {
+    @State var value: Value
+    var content: (Binding<Value>) -> Content
+
+    var body: some View {
+        content($value)
+    }
+
+    init(_ value: Value, content: @escaping (Binding<Value>) -> Content) {
+        self._value = State(wrappedValue: value)
+        self.content = content
+    }
+}
