@@ -39,7 +39,6 @@ struct ActivityCardView: View {
         }
         .frame(width: 320, height: 340)
         .shadow(radius: 10)
-        .padding(20)
     }
 
     @ViewBuilder

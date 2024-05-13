@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		891B06EE2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */; };
+		8936367D2BF2665B000D24E1 /* SwiperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8936367C2BF2665B000D24E1 /* SwiperView.swift */; };
 		8997C6BD2BEEAC1700EA331D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */; };
 		8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */; };
 		89A146322BE972CD003100F6 /* BoredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A146312BE972CD003100F6 /* BoredApp.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		891B06ED2BEFF1AA00931EA9 /* ExactOrRangePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactOrRangePickerModel.swift; sourceTree = "<group>"; };
+		8936367C2BF2665B000D24E1 /* SwiperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperView.swift; sourceTree = "<group>"; };
 		897947D52BF03C7B008DA6C8 /* BoredAppProd.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BoredAppProd.xctestplan; path = /Users/simondeutsch/Documents/MyProjects/BoredApi/Demo/BoredApp/BoredAppProd.xctestplan; sourceTree = "<absolute>"; };
 		8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				89A146332BE972CD003100F6 /* ActivityView.swift */,
 				8997C6BE2BEEAFA200EA331D /* ActivityCardView.swift */,
 				8997C6BC2BEEAC1700EA331D /* ActivityViewModel.swift */,
+				8936367C2BF2665B000D24E1 /* SwiperView.swift */,
 				89AC23F62BE9789700183505 /* BoredApiWrapper.swift */,
 				89A146352BE972CE003100F6 /* Assets.xcassets */,
 				89A146372BE972CF003100F6 /* BoredApp.entitlements */,
@@ -347,6 +350,7 @@
 				8997C6BF2BEEAFA200EA331D /* ActivityCardView.swift in Sources */,
 				89A146342BE972CD003100F6 /* ActivityView.swift in Sources */,
 				89A146322BE972CD003100F6 /* BoredApp.swift in Sources */,
+				8936367D2BF2665B000D24E1 /* SwiperView.swift in Sources */,
 				8997C6BD2BEEAC1700EA331D /* ActivityViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

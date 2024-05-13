@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension ActivityView {
     class FilterViewModel: ObservableObject {
@@ -34,35 +35,40 @@ extension ActivityView {
         @Published var state: ViewState = .idle
         @Published var showFilterSheet = false
         @Published var filterViewModel = FilterViewModel()
+        @Published var offset: CGSize = .zero
         private let api: BoredApiWrapper
 
         init(api: BoredApiWrapper) {
             self.api = api
         }
 
-        func loadActivity() {
+        func loadActivityFireAndForget() {
             Task {
-                do {
-                    let activity: Activity
+                await loadActivity()
+            }
+        }
 
-                    if filterViewModel.active {
-                        activity = try await api.loadActicity(
-                            key: filterViewModel.key,
-                            type: filterViewModel.type,
-                            participants: filterViewModel.participants,
-                            price: filterViewModel.price,
-                            accessibility: filterViewModel.accessibility
-                        )
-                    }
-                    else {
-                        activity = try await api.loadActicity()
-                    }
-                    state = .activity(activity)
+        func loadActivity() async {
+            do {
+                let activity: Activity
+
+                if filterViewModel.active {
+                    activity = try await api.loadActicity(
+                        key: filterViewModel.key,
+                        type: filterViewModel.type,
+                        participants: filterViewModel.participants,
+                        price: filterViewModel.price,
+                        accessibility: filterViewModel.accessibility
+                    )
                 }
-                catch {
-                    logger.error(error)
-                    state = .error(error)
+                else {
+                    activity = try await api.loadActicity()
                 }
+                state = .activity(activity)
+            }
+            catch {
+                logger.error(error)
+                state = .error(error)
             }
         }
 
@@ -74,6 +80,15 @@ extension ActivityView {
 
         func showFilter() {
             showFilterSheet = true
+        }
+
+        func swipe(direction: SwipeDirection) {
+            Task {
+                await loadActivity()
+                withAnimation {
+                    offset = .zero
+                }
+            }
         }
     }
 }

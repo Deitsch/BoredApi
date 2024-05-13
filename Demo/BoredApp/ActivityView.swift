@@ -21,7 +21,9 @@ struct ActivityView: View {
                 case .idle:
                     Text("Activity loading")
                 case .activity(let activity):
-                    ActivityCardView(activity: activity)
+                    SwiperView(offset: $viewModel.offset, swipe: viewModel.swipe) {
+                        ActivityCardView(activity: activity)
+                    }
                 case .error(let error):
                     if case BoredApi.ApiError.noActivityFound = error {
                         Text("No activity found. Try to change filters")
@@ -35,7 +37,7 @@ struct ActivityView: View {
             }
             .padding()
             .navigationTitle("I am Bored")
-            .onAppear(perform: viewModel.loadActivity)
+            .onAppear(perform: viewModel.loadActivityFireAndForget)
             .sheet(isPresented: $viewModel.showFilterSheet) { filterSheet }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -44,7 +46,7 @@ struct ActivityView: View {
                     })
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: viewModel.loadActivity, label: {
+                    Button(action: viewModel.loadActivityFireAndForget, label: {
                         Image(systemName: "arrow.clockwise")
                     })
                 }
