@@ -30,20 +30,17 @@ extension SwiperView {
             self.swipe = swipe
         }
 
-        private var direction: SwipeDirection? {
-            SwipeDirection.fromWidth(width: offset.wrappedValue.width)
-        }
-
         func dragOnchange(gesture: DragGesture.Value) {
             offset.wrappedValue = gesture.translation
         }
 
         func dragOnEnd(gesture: DragGesture.Value) {
+            let direction = SwipeDirection.fromWidth(width: gesture.translation.width)
             if #available(iOS 17.0, *) {
                 withAnimation {
                     swipeCard(direction: direction)
                 } completion: {
-                    guard let direction = self.direction else { return }
+                    guard let direction = direction else { return }
                     self.swipe(direction)
                 }
             } else {
