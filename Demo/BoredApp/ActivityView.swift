@@ -10,7 +10,6 @@ import BoredApi
 
 struct ActivityView: View {
 
-    @EnvironmentObject private var api: BoredApiWrapper
     @StateObject var viewModel: ViewModel
 
     var body: some View {

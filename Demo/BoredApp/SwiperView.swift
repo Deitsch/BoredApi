@@ -39,14 +39,14 @@ struct SwiperView<Content>: View where Content: View {
             Spacer()
             SwiperView(offset: offset, swipe: { _ in }, content: {
                 Rectangle()
-                Text("Some Question")
+                Text(String("Some Question"))
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .bold()
                     .frame(width: 300, height: 400)
             })
             Spacer()
-            Button("reset") { offset.wrappedValue = .zero }
+            Button(String("reset")) { offset.wrappedValue = .zero }
         }
     }
 }

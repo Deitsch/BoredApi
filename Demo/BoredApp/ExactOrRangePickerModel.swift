@@ -16,11 +16,13 @@ extension ExactOrRangePicker {
 
     class ViewModel: ObservableObject {
         @Published var mode: Mode
+        let title: LocalizedStringKey
         var exactAdapter: Binding<String>
         var minAdapter: Binding<String>
         var maxAdapter: Binding<String>
 
-        init(exactOrRange: Binding<ExactOrRange<T>>) {
+        init(exactOrRange: Binding<ExactOrRange<T>>, title: LocalizedStringKey) {
+            self.title = title
             self.mode = switch exactOrRange.wrappedValue {
             case .exact: .exact
             case .range: .range

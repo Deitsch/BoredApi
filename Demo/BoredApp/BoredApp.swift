@@ -28,8 +28,8 @@ struct BoredApp: App {
 
     var body: some Scene {
         WindowGroup {
+            // alternative implementation with envObject
             ActivityView(viewModel: ActivityView.ViewModel(api: api))
-                .environmentObject(api)
         }
     }
 }

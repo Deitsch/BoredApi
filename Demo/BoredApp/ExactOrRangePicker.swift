@@ -9,20 +9,18 @@ import SwiftUI
 
 struct ExactOrRangePicker<T: LosslessStringConvertible>: View where T: Equatable {
 
-    let title: LocalizedStringKey
     @Binding var exactOrRange: ExactOrRange<T>
     @StateObject private var viewModel: ViewModel
 
     init(_ title: LocalizedStringKey, exactOrRange: Binding<ExactOrRange<T>>) {
-        self.title = title
         self._exactOrRange = exactOrRange
-        self._viewModel = StateObject(wrappedValue: ViewModel(exactOrRange: exactOrRange))
+        self._viewModel = StateObject(wrappedValue: ViewModel(exactOrRange: exactOrRange, title: title))
     }
 
     var body: some View {
         VStack {
             HStack {
-                Text(title)
+                Text(viewModel.title)
                 Spacer()
                 Picker("", selection: $viewModel.mode) {
                     ForEach(Mode.allCases) { value in
